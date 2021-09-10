@@ -1,25 +1,78 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Button from "./utils/Button";
 
 function App() {
+  const handleOnClick = (e) => {
+    e.currentTarget.blur();
+    console.log(e.target.innerText);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="main-menu container">
+        <div>
+          <h1 className="main-title">
+            Initiative
+            <br />
+            Tracker
+          </h1>
+        </div>
+        <div>
+          <Button
+            color="#17d127"
+            text="Add Player"
+            onClick={handleOnClick}
+            className="btn"
+          />
+          <Button
+            color="#e83333"
+            text="Add Monster"
+            onClick={handleOnClick}
+            className="btn"
+          />
+          <Button
+            color="#4d0be6"
+            text="Add Other"
+            onClick={handleOnClick}
+            className="btn"
+          />
+        </div>
+        <div>
+          <Button
+            color="#737373"
+            text="Clear All"
+            onClick={handleOnClick}
+            className="btn"
+          />
+        </div>
+      </div>
+
+      <div className="combatants-list container">
+        <div></div>
+      </div>
     </div>
   );
 }
 
 export default App;
+
+//I eventually want this <App /> output to be significantly reworked and shrunk down.  Preferably heavily compartmentalized and multi-level nested.
+
+//***************************** */
+
+//Example:
+
+//App returns the <Dashboard/> component (or we can just rename App to Dashboard, depending on what we need to do with useState() and other hooks).
+
+//Dashboard returns the <MainMenu/> and <CombatantList/> components (as shown in the picture I sent on Discord).
+
+//MainMenu returns the <TitleCard/>, <ButtonMenu/>, and <ClearAll/> components on the left side.
+
+//CombatantList returns multiple <Combatant/> divs on the right side within the <CombatantList/> component.
+
+//****************************** */
+
+//The <EntryForm/> component should pop up like a modal whenever one of the "add" buttons is clicked.  I tentatively put it in the "utils" folder because all the various buttons will be accessing it.
+
+//The user can click whatever button they need, enter the "name" and "initiative score", and hit submit. That  closes the modal and generates the corresponding <Combatant/> div inside the <CombatantList/> component.  The various <Combatant/> divs will dynamically reorder themselves upon input of each new instance.
