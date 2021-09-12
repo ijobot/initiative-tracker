@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Button from "./utils/Button";
+import EntryForm from "./utils/EntryForm";
 
 function App() {
-  const handleOnClick = (e) => {
+  const [showEntryForm, setShowEntryForm] = useState(false);
+
+  const openEntryForm = (e) => {
     e.currentTarget.blur();
     console.log(e.target.innerText);
+    setShowEntryForm(!showEntryForm);
   };
 
   return (
     <div className="app-container">
-      <div className="main-menu container">
+      {showEntryForm && <EntryForm />}
+      <div className="main-menu container bg-darkgrey border">
         <div>
           <h1 className="main-title">
             Initiative
@@ -22,19 +27,19 @@ function App() {
           <Button
             color="#17d127"
             text="Add Player"
-            onClick={handleOnClick}
+            onClick={openEntryForm}
             className="btn"
           />
           <Button
             color="#e83333"
             text="Add Monster"
-            onClick={handleOnClick}
+            onClick={openEntryForm}
             className="btn"
           />
           <Button
             color="#4d0be6"
             text="Add Other"
-            onClick={handleOnClick}
+            onClick={openEntryForm}
             className="btn"
           />
         </div>
@@ -42,13 +47,13 @@ function App() {
           <Button
             color="#737373"
             text="Clear All"
-            onClick={handleOnClick}
+            // onClick={handleOnClick}
             className="btn"
           />
         </div>
       </div>
 
-      <div className="combatants-list container">
+      <div className="combatants-list container bg-darkgrey border">
         <div></div>
       </div>
     </div>
