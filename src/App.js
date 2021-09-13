@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Button from "./utils/Button";
 import EntryForm from "./utils/EntryForm";
+import CombatantList from "./components/CombatantList";
 
 function App() {
   const [showEntryForm, setShowEntryForm] = useState(false);
@@ -54,7 +55,7 @@ function App() {
       </div>
 
       <div className="combatants-list container bg-darkgrey border">
-        <div></div>
+        <CombatantList />
       </div>
     </div>
   );
