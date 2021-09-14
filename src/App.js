@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Button from "./utils/Button";
 import EntryForm from "./utils/EntryForm";
+import CombatantList from "./components/CombatantList";
 
 function App() {
   const [showEntryForm, setShowEntryForm] = useState(false);
@@ -38,7 +39,7 @@ function App() {
           />
           <Button
             color="#4d0be6"
-            text="Add Other"
+            text="Add NPC"
             onClick={openEntryForm}
             className="btn"
           />
@@ -53,8 +54,8 @@ function App() {
         </div>
       </div>
 
-      <div className="combatants-list container bg-darkgrey border">
-        <div></div>
+      <div className="combatant-menu container bg-darkgrey border">
+        <CombatantList />
       </div>
     </div>
   );
