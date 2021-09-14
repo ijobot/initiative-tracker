@@ -39,7 +39,7 @@ function App() {
           />
           <Button
             color="#4d0be6"
-            text="Add Other"
+            text="Add NPC"
             onClick={openEntryForm}
             className="btn"
           />
@@ -54,7 +54,7 @@ function App() {
         </div>
       </div>
 
-      <div className="combatants-list container bg-darkgrey border">
+      <div className="combatant-menu container bg-darkgrey border">
         <CombatantList />
       </div>
     </div>

@@ -1,16 +1,13 @@
-import React from 'react'
+import React from "react";
 
-function Combatant(props) {
-
-    return (
-        <div>
-            <p>{props.name}</p>
-            <p>{props.roll}</p>
-            <p>{props.userType}</p>
-            <br></br>
-        </div>
-    )
+function Combatant({ name, roll, userType }) {
+  return (
+    <div className="container combatant-row border">
+      <p>{userType}</p>
+      <p>{name}</p>
+      <p>{roll}</p>
+    </div>
+  );
 }
 
-export default Combatant
-
+export default Combatant;

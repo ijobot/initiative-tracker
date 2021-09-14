@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
 }
 
 .app-container {
@@ -24,10 +25,17 @@
   justify-content: space-between;
 }
 
-.combatants-list {
+.combatant-menu {
   grid-column-start: 4;
   grid-row-start: 2;
   color: azure;
+}
+
+.combatant-list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .container {
@@ -36,9 +44,15 @@
   padding: 1em;
 }
 
+.combatant-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  font-size: 1.2rem;
+  padding: 0.5em 0em;
+}
+
 .main-title {
   font-size: 3em;
-  font-weight: bold;
   color: rgb(180, 40, 40);
   -webkit-text-stroke: 0.75px rgba(233, 210, 8);
 }
@@ -46,8 +60,7 @@
 .btn {
   border: 2px solid transparent;
   color: black;
-  font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   padding: 0.5em 1.25em;
   cursor: pointer;
   display: block;
@@ -55,8 +68,9 @@
 }
 
 .btn:not(:first-of-type),
-input:not(:first-of-type) {
-  margin-top: 1em;
+input:not(:first-of-type),
+.combatant-row:not(:first-of-type) {
+  margin-top: 0.5em;
 }
 
 .btn:hover,
@@ -95,8 +109,7 @@ input {
   padding: 0.5em 1.25em;
   color: azure;
   width: 100%;
-  font-size: 1.2em;
-  font-weight: bold;
+  font-size: 1.2rem;
   margin: 0;
   display: block;
   box-sizing: border-box;
