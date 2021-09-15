@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Combatant from "./Combatant";
-import Button from "../utils/Button";
 
 function CombatantList() {
   const [combatantList, setCombatantList] = useState([
@@ -31,12 +30,6 @@ function CombatantList() {
   // ComponentDidUpdate - Google if this is possible. (Completed by Joe - CDM, CDU, and CWU are replaced by useEffect() )
 
   // Create a button to add another player in this component to test. Only for testing. (Completed by Joe)
-
-  const combatantInfo = {
-    name: "EXTRA",
-    roll: 15,
-    userType: "Player",
-  };
 
   const addNewCombatant = (combatantInfo) => {
     setCombatantList([...combatantList, combatantInfo]);
