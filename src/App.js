@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.css";
-import MenuDisplay from "./components/MenuDisplay";
-import CombatDisplay from "./components/CombatDisplay";
+import Wrapper from "./components/Wrapper";
 
 function App() {
   return (
     <div className="app-container">
-      <MenuDisplay />
-      <CombatDisplay />
+      <Wrapper />
     </div>
   );
 }

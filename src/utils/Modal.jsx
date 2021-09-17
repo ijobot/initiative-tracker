@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Button from "./Button";
 
-const EntryForm = ({ typeOfEntry, colorOfModal }) => {
+const Modal = ({
+  typeOfEntry,
+  colorOfModal,
+  handleCloseModal,
+  addCombatant,
+}) => {
   const [name, setName] = useState("");
   const [score, setScore] = useState("");
-  const [showEntryForm, setShowEntryForm] = useState(true);
 
-  const onEntrySubmit = (e) => {
+  const handleModalSubmit = (e) => {
     e.preventDefault();
     e.currentTarget.blur();
 
@@ -15,19 +20,10 @@ const EntryForm = ({ typeOfEntry, colorOfModal }) => {
     } else if (!score) {
       alert("Please enter combatant's initiative score");
     }
-    setName(name);
-    setScore(score);
-    setShowEntryForm(!showEntryForm);
-    const createdCombatant = { typeOfEntry, name, score };
-
-    console.log(createdCombatant);
+    const newCombatant = { typeOfEntry, name, score, colorOfModal };
+    addCombatant(newCombatant);
+    handleCloseModal();
   };
-
-  const onEntryCancel = (e) => {
-    setShowEntryForm(!showEntryForm);
-  };
-
-  //new function that spreads info into array
 
   return (
     <form
@@ -58,17 +54,23 @@ const EntryForm = ({ typeOfEntry, colorOfModal }) => {
           color="#737373ff"
           text="Submit"
           className="btn"
-          onClick={onEntrySubmit}
+          onClick={handleModalSubmit}
         />
         <Button
           color="#737373ff"
           text="Cancel"
           className="btn"
-          onClick={onEntryCancel}
+          onClick={() => handleCloseModal()}
         />
       </div>
     </form>
   );
 };
 
-export default EntryForm;
+export default Modal;
+
+Modal.propTypes = {
+  typeOfEntry: PropTypes.string.isRequired,
+  colorOfModal: PropTypes.string.isRequired,
+  handleCloseModal: PropTypes.func,
+};

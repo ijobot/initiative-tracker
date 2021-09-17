@@ -1,10 +1,10 @@
 import React from "react";
 import CombatantList from "./CombatantList";
 
-const CombatDisplay = () => {
+const CombatDisplay = ({ combatantList }) => {
   return (
     <div className="combatant-menu container bg-darkgrey border">
-      <CombatantList />
+      <CombatantList combatantList={combatantList} />
     </div>
   );
 };

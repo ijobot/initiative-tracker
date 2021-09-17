@@ -1,24 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../utils/Button";
-import EntryForm from "../utils/EntryForm";
 
-const MenuDisplay = () => {
-  const [showEntryForm, setShowEntryForm] = useState(false);
-  const [typeOfEntry, setTypeOfEntry] = useState("");
-  const [colorOfModal, setColorOfModal] = useState("");
-
-  const openEntryForm = (e) => {
-    e.currentTarget.blur();
-    setShowEntryForm(!showEntryForm);
-    setTypeOfEntry(e.currentTarget.innerText.slice(4));
-    setColorOfModal(e.target.style.backgroundColor);
-  };
-
-  const closeEntryForm = (e) => {
-    e.currentTarget.blur();
-    setShowEntryForm(!showEntryForm);
-  };
-
+const MenuDisplay = ({ handleOpenModal, handleClearList }) => {
   return (
     <div className="main-menu container bg-darkgrey border">
       <div>
@@ -26,39 +9,32 @@ const MenuDisplay = () => {
       </div>
       <div>
         <Button
-          color="#17d127ff"
+          color="#ACBFA4ff"
           text="Add Player"
-          onClick={openEntryForm}
+          onClick={(e) => handleOpenModal(e, "Player", "#ACBFA4ff")}
           className="btn"
         />
         <Button
-          color="#e83333ff"
+          color="#FF7F11ff"
           text="Add Monster"
-          onClick={openEntryForm}
+          onClick={(e) => handleOpenModal(e, "Monster", "#FF7F11ff")}
           className="btn"
         />
         <Button
-          color="#4d0be6ff"
+          color="#E2E8CEff"
           text="Add NPC"
-          onClick={openEntryForm}
+          onClick={(e) => handleOpenModal(e, "NPC", "#E2E8CEff")}
           className="btn"
         />
       </div>
       <div>
         <Button
-          color="#737373ff"
+          color="#6D668Fff"
           text="Clear All"
-          // onClick={clearCombatDisplay}
+          onClick={handleClearList}
           className="btn"
         />
       </div>
-      {showEntryForm && (
-        <EntryForm
-          typeOfEntry={typeOfEntry}
-          onEntryFormSubmit={closeEntryForm}
-          colorOfModal={colorOfModal}
-        />
-      )}
     </div>
   );
 };
