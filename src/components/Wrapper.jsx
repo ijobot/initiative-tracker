@@ -28,6 +28,13 @@ const Wrapper = () => {
     console.log(updatedCombatantList);
   };
 
+  const removeCombatant = (index) => {
+    const updatedCombatantList = cloneDeep(combatantList);
+    updatedCombatantList.slice(0, index);
+    setCombatantList(updatedCombatantList);
+    console.log(updatedCombatantList);
+  };
+
   const handleClearList = (e) => {
     e.currentTarget.blur();
     setCombatantList([]);
@@ -39,7 +46,10 @@ const Wrapper = () => {
         handleOpenModal={handleOpenModal}
         handleClearList={handleClearList}
       />
-      <CombatDisplay combatantList={combatantList} />
+      <CombatDisplay
+        combatantList={combatantList}
+        removeCombatant={removeCombatant}
+      />
       {showModal && (
         <Modal
           typeOfEntry={typeOfEntry}

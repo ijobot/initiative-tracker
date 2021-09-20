@@ -1,7 +1,14 @@
 import React from "react";
 import Button from "../utils/Button";
 
-const Combatant = ({ typeOfEntry, name, score, colorOfModal: colorOfDiv }) => {
+const Combatant = ({
+  typeOfEntry,
+  removeCombatant,
+  name,
+  score,
+  colorOfModal: colorOfDiv,
+  index,
+}) => {
   return (
     <div
       style={{ backgroundColor: colorOfDiv }}
@@ -14,7 +21,8 @@ const Combatant = ({ typeOfEntry, name, score, colorOfModal: colorOfDiv }) => {
         text="X"
         color="#6D668Fff"
         className="btn btn-small"
-        // onClick={() => handleCloseDiv()}
+        index="1"
+        onClick={() => removeCombatant(index)}
       />
     </div>
   );

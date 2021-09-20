@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
 import Combatant from "./Combatant";
 
-const CombatantList = ({ combatantList }) => {
+const CombatantList = ({ combatantList, removeCombatant, index }) => {
   const combatantMap = combatantList.map((data) => {
     return (
       <Combatant
-        key={Math.floor(Math.random() * 100000)}
+        key={`${data.name}${data.score}`}
         name={data.name}
         score={data.score}
         typeOfEntry={data.typeOfEntry}
         colorOfModal={data.colorOfModal}
+        index={index}
+        removeCombatant={removeCombatant}
       />
     );
   });
