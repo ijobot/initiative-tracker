@@ -1,7 +1,7 @@
 import Combatant from "./Combatant";
 
-const CombatantList = ({ combatantList, removeCombatant, index }) => {
-  const combatantMap = combatantList.map((data) => {
+const CombatantList = ({ combatantList, removeCombatant }) => {
+  const combatantMap = combatantList.map((data, index) => {
     return (
       <Combatant
         key={`${data.name}${data.score}`}
@@ -9,8 +9,8 @@ const CombatantList = ({ combatantList, removeCombatant, index }) => {
         score={data.score}
         typeOfEntry={data.typeOfEntry}
         colorOfModal={data.colorOfModal}
-        index={index}
         removeCombatant={removeCombatant}
+        index={index}
       />
     );
   });

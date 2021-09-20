@@ -21,7 +21,6 @@ const Combatant = ({
         text="X"
         color="#6D668Fff"
         className="btn btn-small"
-        index="1"
         onClick={() => removeCombatant(index)}
       />
     </div>

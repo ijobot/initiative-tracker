@@ -25,12 +25,11 @@ const Wrapper = () => {
     const updatedCombatantList = cloneDeep(combatantList);
     updatedCombatantList.push(newCombatant);
     setCombatantList(updatedCombatantList);
-    console.log(updatedCombatantList);
   };
 
   const removeCombatant = (index) => {
     const updatedCombatantList = cloneDeep(combatantList);
-    updatedCombatantList.slice(0, index);
+    updatedCombatantList.splice(index, 1);
     setCombatantList(updatedCombatantList);
     console.log(updatedCombatantList);
   };
