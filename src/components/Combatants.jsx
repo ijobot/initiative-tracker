@@ -1,6 +1,6 @@
 import Combatant from "./Combatant";
 
-const CombatantList = ({ combatantList, removeCombatant }) => {
+const Combatants = ({ combatantList, removeCombatant, editCombatant }) => {
   const combatantMap = combatantList.map((data, index) => {
     return (
       <Combatant
@@ -11,6 +11,7 @@ const CombatantList = ({ combatantList, removeCombatant }) => {
         colorOfModal={data.colorOfModal}
         removeCombatant={removeCombatant}
         index={index}
+        editCombatant={editCombatant}
       />
     );
   });
@@ -30,4 +31,4 @@ const CombatantList = ({ combatantList, removeCombatant }) => {
   );
 };
 
-export default CombatantList;
+export default Combatants;
