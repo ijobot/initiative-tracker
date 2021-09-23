@@ -1,12 +1,13 @@
 import React from "react";
-import CombatantList from "./CombatantList";
+import Combatants from "./Combatants";
 
-const CombatDisplay = ({ combatantList, removeCombatant }) => {
+const CombatDisplay = ({ combatantList, removeCombatant, editCombatant }) => {
   return (
     <div className="combatant-menu container bg-darkgrey border">
-      <CombatantList
+      <Combatants
         combatantList={combatantList}
         removeCombatant={removeCombatant}
+        editCombatant={editCombatant}
       />
     </div>
   );
