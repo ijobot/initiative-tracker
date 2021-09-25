@@ -49,7 +49,7 @@ const Wrapper = () => {
 
   const editCombatant = (editedScore, index) => {
     const updatedCombatantList = cloneDeep(combatantList);
-    updatedCombatantList[index].score = editedScore;
+    updatedCombatantList[index].score = parseInt(editedScore);
     setCombatantList(updatedCombatantList);
   };
 

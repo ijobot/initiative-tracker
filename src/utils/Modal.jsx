@@ -11,7 +11,12 @@ const Modal = ({
   const [name, setName] = useState("");
   const [score, setScore] = useState("");
 
-  const handleModalSubmit = (e) => {
+
+    if (score !== score) {
+      setScore("")
+    }
+
+    const handleModalSubmit = (e) => {
     e.preventDefault();
     e.currentTarget.blur();
 
@@ -19,7 +24,8 @@ const Modal = ({
       alert("Please enter combatant's name");
     } else if (!score) {
       alert("Please enter combatant's initiative score");
-    }
+    } 
+
     const newCombatant = { typeOfEntry, name, score, colorOfModal };
     addCombatant(newCombatant);
     handleCloseModal();
@@ -45,7 +51,9 @@ const Modal = ({
           placeholder="Enter Initiative Score"
           className="bg-darkgrey border"
           value={score}
-          onChange={(e) => setScore(e.target.value)}
+          pattern="[0-9]*"
+          onChange={(e) => setScore(parseInt(e.target.value.split(/\D/).join('')))
+          }
         />
       </div>
 
