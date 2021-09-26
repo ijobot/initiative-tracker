@@ -5,6 +5,7 @@ const MenuDisplay = ({
   handleOpenModal,
   handleOpenPartyModal,
   handleClearList,
+  handleLoadParty,
 }) => {
   return (
     <div className="main-menu container bg-darkgrey border">
@@ -36,14 +37,14 @@ const MenuDisplay = ({
           color="#CACF85"
           text="Create Party"
           onClick={(e) =>
-            handleOpenPartyModal(e, "Create Your Party", "#CACF85")
+            handleOpenPartyModal(e, "Player", "#CACF85")
           }
           className="btn"
         />
         <Button
           color="#CACF85"
           text="Add Party"
-          // onClick={handleLoadParty}
+          onClick={handleLoadParty}
           className="btn"
         />
       </div>

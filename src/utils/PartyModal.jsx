@@ -4,7 +4,7 @@ import Button from "./Button";
 const PartyModal = ({
   typeOfEntry,
   colorOfModal,
-  handleCloseModal,
+  addPartyMember,
   addCombatant,
   handleClosePartyModal,
 }) => {
@@ -22,8 +22,13 @@ const PartyModal = ({
     }
     const newCombatant = { typeOfEntry, name, score, colorOfModal };
     addCombatant(newCombatant);
-    handleCloseModal();
+    addPartyMember(newCombatant);
+    handleClosePartyModal();
   };
+
+  if (score !== score) {
+    setScore("")
+  }
 
   return (
     <form
@@ -45,7 +50,7 @@ const PartyModal = ({
           placeholder="Enter Initiative Score"
           className="bg-darkgrey border"
           value={score}
-          onChange={(e) => setScore(e.target.value)}
+          onChange={(e) => setScore(parseInt(e.target.value.split(/\D/).join('')))}
         />
       </div>
 

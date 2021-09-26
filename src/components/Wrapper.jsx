@@ -11,7 +11,7 @@ const Wrapper = () => {
   const [typeOfEntry, setTypeOfEntry] = useState("");
   const [colorOfModal, setColorOfModal] = useState("");
   const [combatantList, setCombatantList] = useState([]);
-  const [partyMember, setPartyMember] = useState("");
+  const [partyMember, setPartyMember] = useState([]);
 
   const handleOpenModal = (e, type, color) => {
     e.currentTarget.blur();
@@ -40,6 +40,13 @@ const Wrapper = () => {
     updatedCombatantList.push(newCombatant);
     setCombatantList(updatedCombatantList);
   };
+
+  const addPartyMember = (newCombatantMember) => {
+    const updatedPartyList = cloneDeep(partyMember);
+    updatedPartyList.push(newCombatantMember);
+    setPartyMember(updatedPartyList);
+  };
+
 
   const removeCombatant = (index) => {
     const updatedCombatantList = cloneDeep(combatantList);
@@ -73,6 +80,15 @@ const Wrapper = () => {
       setCombatantList(updatedCombatantList);}
   };
 
+  const handleLoadParty = () => {
+    const updatedCombatantList = cloneDeep(partyMember);
+
+    for (const val of updatedCombatantList) { 
+      val.colorOfModal = "#8CBA80";
+  } 
+    setCombatantList(updatedCombatantList);
+  }
+
   const handleClearList = (e) => {
     e.currentTarget.blur();
     setCombatantList([]);
@@ -84,6 +100,7 @@ const Wrapper = () => {
         handleOpenModal={handleOpenModal}
         handleOpenPartyModal={handleOpenPartyModal}
         handleClearList={handleClearList}
+        handleLoadParty={handleLoadParty}
       />
       <CombatDisplay
         combatantList={combatantList}
@@ -104,6 +121,7 @@ const Wrapper = () => {
           typeOfEntry={typeOfEntry}
           colorOfModal={colorOfModal}
           handleClosePartyModal={handleClosePartyModal}
+          addPartyMember={addPartyMember}
           addCombatant={addCombatant}
         />
       )}
