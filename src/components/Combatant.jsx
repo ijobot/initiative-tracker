@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../utils/Button";
-import Dropdown from "../utils/Dropdown";
+import DropdownScore from "../utils/DropdownScore";
+import DropdownType from "../utils/DropdownType";
 
 const Combatant = ({
   typeOfEntry,
@@ -10,9 +11,14 @@ const Combatant = ({
   colorOfModal: colorOfDiv,
   index,
   editCombatantScore,
+  editCombatantType,
 }) => {
   const handleEditCombatantScore = (editedScore, index) => {
     editCombatantScore(editedScore.target.value, index);
+  };
+
+  const handleEditCombatantType = (editedType, index) => {
+    editCombatantType(editedType.target.value, index);
   };
 
   return (
@@ -20,8 +26,24 @@ const Combatant = ({
       style={{ backgroundColor: colorOfDiv }}
       className="container combatant-row"
     >
-      <p>{typeOfEntry}</p>
+
+      <div className="score-picker">
+        <select
+          style={{ backgroundColor: colorOfDiv }}
+          className="score-list"
+          name="type"
+          onChange={(editedType) => handleEditCombatantType(editedType, index)}
+        >
+          <option className="score-option">{typeOfEntry}</option>
+          <DropdownType />
+        </select>
+      </div>
+
+
       <p>{name}</p>
+
+
+
       <div className="score-picker">
         <select
           style={{ backgroundColor: colorOfDiv }}
@@ -30,7 +52,7 @@ const Combatant = ({
           onChange={(editedScore) => handleEditCombatantScore(editedScore, index)}
         >
           <option className="score-option">{score}</option>
-          <Dropdown />
+          <DropdownScore />
         </select>
       </div>
       <Button

@@ -53,6 +53,26 @@ const Wrapper = () => {
     setCombatantList(updatedCombatantList);
   };
 
+  const editCombatantName = (editedName, index) => {
+    const updatedCombatantList = cloneDeep(combatantList);
+    updatedCombatantList[index].name = editedName;
+    setCombatantList(updatedCombatantList);
+  };
+
+  const editCombatantType = (editedType, index) => {
+    const updatedCombatantList = cloneDeep(combatantList);
+    updatedCombatantList[index].typeOfEntry = editedType;
+    if (editedType === "Player") {
+      updatedCombatantList[index].colorOfModal = "#8CBA80";
+      setCombatantList(updatedCombatantList);
+    } else if (editedType === "Monster") {
+      updatedCombatantList[index].colorOfModal = "#DA4167";
+      setCombatantList(updatedCombatantList);
+    } else if (editedType === "NPC") {
+      updatedCombatantList[index].colorOfModal = "#2E86AB";
+      setCombatantList(updatedCombatantList);}
+  };
+
   const handleClearList = (e) => {
     e.currentTarget.blur();
     setCombatantList([]);
@@ -69,6 +89,7 @@ const Wrapper = () => {
         combatantList={combatantList}
         removeCombatant={removeCombatant}
         editCombatantScore={editCombatantScore}
+        editCombatantType={editCombatantType}
       />
       {showModal && (
         <Modal

@@ -1,6 +1,6 @@
 import Combatant from "./Combatant";
 
-const Combatants = ({ combatantList, removeCombatant, editCombatantScore }) => {
+const Combatants = ({ combatantList, removeCombatant, editCombatantScore, editCombatantType }) => {
   const combatantMap = combatantList.map((data, index) => {
     return (
       <Combatant
@@ -12,6 +12,7 @@ const Combatants = ({ combatantList, removeCombatant, editCombatantScore }) => {
         removeCombatant={removeCombatant}
         index={index}
         editCombatantScore={editCombatantScore}
+        editCombatantType={editCombatantType}
       />
     );
   });

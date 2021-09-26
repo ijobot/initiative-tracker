@@ -36,7 +36,13 @@ const Modal = ({
       className="modal modal-grid bg-darkgrey border"
       style={{ backgroundColor: colorOfModal }}
     >
+      <div>
       <h3 className="modal-entry">{typeOfEntry}</h3>
+        {/* <input
+          type="radio"
+          isChecked="true"
+        /><p>Is Party Member?</p> */}
+      </div>
       <div className="modal-inputs">
         <input
           type="text"
