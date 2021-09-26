@@ -47,7 +47,7 @@ const Wrapper = () => {
     setCombatantList(updatedCombatantList);
   };
 
-  const editCombatant = (editedScore, index) => {
+  const editCombatantScore = (editedScore, index) => {
     const updatedCombatantList = cloneDeep(combatantList);
     updatedCombatantList[index].score = parseInt(editedScore);
     setCombatantList(updatedCombatantList);
@@ -68,7 +68,7 @@ const Wrapper = () => {
       <CombatDisplay
         combatantList={combatantList}
         removeCombatant={removeCombatant}
-        editCombatant={editCombatant}
+        editCombatantScore={editCombatantScore}
       />
       {showModal && (
         <Modal
