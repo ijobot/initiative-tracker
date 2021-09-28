@@ -11,10 +11,9 @@ const Modal = ({
   const [name, setName] = useState("");
   const [score, setScore] = useState("");
 
-  // This was getting a warning - I assume it will be important once the editing capabilities are involved.
-  // if (score !== score) {
-  //   setScore("");
-  // }
+  if (score !== score) {
+    setScore("");
+  }
 
   const handleModalSubmit = (e) => {
     e.preventDefault();
@@ -38,10 +37,6 @@ const Modal = ({
     >
       <div className="modal-entry">
         <p className="tall">{typeOfEntry}</p>
-        {/* <input
-          type="radio"
-          isChecked="true"
-        /><p>Is Party Member?</p> */}
       </div>
       <div className="modal-inputs">
         <input

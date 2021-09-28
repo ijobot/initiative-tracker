@@ -50,7 +50,12 @@ const Wrapper = () => {
 
   const handleAddParty = (e) => {
     e.currentTarget.blur();
-    setCombatantList(partyList);
+    const updatedCombatantList = cloneDeep(partyList);
+
+    for (const val of updatedCombatantList) {
+      val.colorOfModal = "#8CBA80";
+    }
+    setCombatantList(updatedCombatantList);
   };
 
   const handleClearParty = (e) => {
@@ -85,15 +90,6 @@ const Wrapper = () => {
     }
   };
 
-  // const handleLoadParty = () => {
-  //   const updatedCombatantList = cloneDeep(partyMember);
-
-  //   for (const val of updatedCombatantList) {
-  //     val.colorOfModal = "#8CBA80";
-  //   }
-  //   setCombatantList(updatedCombatantList);
-  // };
-
   const handleClearList = (e) => {
     e.currentTarget.blur();
     setCombatantList([]);
@@ -105,7 +101,6 @@ const Wrapper = () => {
         handleOpenModal={handleOpenModal}
         handleOpenPartyModal={handleOpenPartyModal}
         handleClearList={handleClearList}
-        // handleLoadParty={handleLoadParty}
         handleAddParty={handleAddParty}
         handleClearParty={handleClearParty}
       />

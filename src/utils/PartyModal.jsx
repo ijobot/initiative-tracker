@@ -25,10 +25,9 @@ const PartyModal = ({
     setScore("");
   };
 
-  // This was getting a warning - I assume it will be important once the editing capabilities are involved.
-  // if (score !== score) {
-  //   setScore("");
-  // }
+  if (score !== score) {
+    setScore("");
+  }
 
   return (
     <form
