@@ -5,7 +5,6 @@ const PartyModal = ({
   typeOfEntry,
   colorOfModal,
   addPartyMember,
-  addCombatant,
   handleClosePartyModal,
 }) => {
   const [name, setName] = useState("");
@@ -20,15 +19,16 @@ const PartyModal = ({
     } else if (!score) {
       alert("Please enter combatant's initiative score");
     }
-    const newCombatant = { typeOfEntry, name, score, colorOfModal };
-    addCombatant(newCombatant);
-    addPartyMember(newCombatant);
-    handleClosePartyModal();
+    const newPartyMember = { typeOfEntry, name, score, colorOfModal };
+    addPartyMember(newPartyMember);
+    setName("");
+    setScore("");
   };
 
-  if (score !== score) {
-    setScore("")
-  }
+  // This was getting a warning - I assume it will be important once the editing capabilities are involved.
+  // if (score !== score) {
+  //   setScore("");
+  // }
 
   return (
     <form
@@ -40,7 +40,7 @@ const PartyModal = ({
         <input
           type="text"
           placeholder="Enter Combatant Name"
-          className="bg-darkgrey border"
+          className="bg-darkgrey"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -48,22 +48,32 @@ const PartyModal = ({
         <input
           type="text"
           placeholder="Enter Initiative Score"
-          className="bg-darkgrey border"
+          className="bg-darkgrey"
           value={score}
-          onChange={(e) => setScore(parseInt(e.target.value.split(/\D/).join('')))}
+          onChange={(e) =>
+            setScore(parseInt(e.target.value.split(/\D/).join("")))
+          }
         />
       </div>
 
       <div className="modal-buttons">
         <Button
           color="#737373ff"
-          text="Submit"
+          text="Add"
           className="btn"
           onClick={handleModalSubmit}
         />
         <Button
           color="#737373ff"
           text="Cancel"
+          className="btn"
+          onClick={() => handleClosePartyModal()}
+        />
+      </div>
+      <div className="modal-finish-party">
+        <Button
+          color="#737373ff"
+          text="Finish"
           className="btn"
           onClick={() => handleClosePartyModal()}
         />

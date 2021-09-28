@@ -13,20 +13,18 @@ const Combatant = ({
   editCombatantScore,
   editCombatantType,
 }) => {
-  const handleEditCombatantScore = (editedScore, index) => {
-    editCombatantScore(editedScore.target.value, index);
-  };
-
   const handleEditCombatantType = (editedType, index) => {
     editCombatantType(editedType.target.value, index);
   };
 
+  const handleEditCombatantScore = (editedScore, index) => {
+    editCombatantScore(editedScore.target.value, index);
+  };
   return (
     <div
       style={{ backgroundColor: colorOfDiv }}
       className="container combatant-row"
     >
-
       <div className="score-picker">
         <select
           style={{ backgroundColor: colorOfDiv }}
@@ -39,17 +37,16 @@ const Combatant = ({
         </select>
       </div>
 
-
       <p>{name}</p>
-
-
 
       <div className="score-picker">
         <select
           style={{ backgroundColor: colorOfDiv }}
           className="score-list"
           name="score"
-          onChange={(editedScore) => handleEditCombatantScore(editedScore, index)}
+          onChange={(editedScore) =>
+            handleEditCombatantScore(editedScore, index)
+          }
         >
           <option className="score-option">{score}</option>
           <DropdownScore />

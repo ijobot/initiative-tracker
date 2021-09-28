@@ -11,12 +11,12 @@ const Modal = ({
   const [name, setName] = useState("");
   const [score, setScore] = useState("");
 
+  // This was getting a warning - I assume it will be important once the editing capabilities are involved.
+  // if (score !== score) {
+  //   setScore("");
+  // }
 
-    if (score !== score) {
-      setScore("")
-    }
-
-    const handleModalSubmit = (e) => {
+  const handleModalSubmit = (e) => {
     e.preventDefault();
     e.currentTarget.blur();
 
@@ -24,7 +24,7 @@ const Modal = ({
       alert("Please enter combatant's name");
     } else if (!score) {
       alert("Please enter combatant's initiative score");
-    } 
+    }
 
     const newCombatant = { typeOfEntry, name, score, colorOfModal };
     addCombatant(newCombatant);
@@ -36,8 +36,8 @@ const Modal = ({
       className="modal modal-grid bg-darkgrey border"
       style={{ backgroundColor: colorOfModal }}
     >
-      <div>
-      <h3 className="modal-entry">{typeOfEntry}</h3>
+      <div className="modal-entry">
+        <p className="tall">{typeOfEntry}</p>
         {/* <input
           type="radio"
           isChecked="true"
@@ -47,7 +47,7 @@ const Modal = ({
         <input
           type="text"
           placeholder="Enter Combatant Name"
-          className="bg-darkgrey border"
+          className="bg-darkgrey"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -55,10 +55,11 @@ const Modal = ({
         <input
           type="text"
           placeholder="Enter Initiative Score"
-          className="bg-darkgrey border"
+          className="bg-darkgrey"
           value={score}
           pattern="[0-9]*"
-          onChange={(e) => setScore(parseInt(e.target.value.split(/\D/).join('')))
+          onChange={(e) =>
+            setScore(parseInt(e.target.value.split(/\D/).join("")))
           }
         />
       </div>
