@@ -45,7 +45,6 @@ const Wrapper = () => {
     const updatedPartyList = cloneDeep(partyList);
     updatedPartyList.push(newPartyMember);
     setPartyList(updatedPartyList);
-    console.log("party list", updatedPartyList);
   };
 
   const handleAddParty = (e) => {
@@ -124,6 +123,7 @@ const Wrapper = () => {
           colorOfModal={colorOfModal}
           handleClosePartyModal={handleClosePartyModal}
           addPartyMember={addPartyMember}
+          partyList={partyList}
         />
       )}
     </>

@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import Button from "./Button";
+import PartyVisual from "./PartyVisual";
 
 const PartyModal = ({
   typeOfEntry,
   colorOfModal,
   addPartyMember,
   handleClosePartyModal,
+  partyList,
 }) => {
   const [name, setName] = useState("");
   const [score, setScore] = useState("");
+  const [showPartyDisplay, setShowPartyDisplay] = useState(false);
 
-  const handleModalSubmit = (e) => {
+  const handleAddPartyMember = (e) => {
     e.preventDefault();
     e.currentTarget.blur();
 
@@ -20,9 +23,15 @@ const PartyModal = ({
       alert("Please enter combatant's initiative score");
     }
     const newPartyMember = { typeOfEntry, name, score, colorOfModal };
+    setShowPartyDisplay(true);
     addPartyMember(newPartyMember);
     setName("");
     setScore("");
+  };
+
+  const handleFinishPartyCreation = () => {
+    setShowPartyDisplay(false);
+    handleClosePartyModal();
   };
 
   if (score !== score) {
@@ -60,7 +69,7 @@ const PartyModal = ({
           color="#737373ff"
           text="Add"
           className="btn"
-          onClick={handleModalSubmit}
+          onClick={handleAddPartyMember}
         />
         <Button
           color="#737373ff"
@@ -74,9 +83,10 @@ const PartyModal = ({
           color="#737373ff"
           text="Finish"
           className="btn"
-          onClick={() => handleClosePartyModal()}
+          onClick={() => handleFinishPartyCreation()}
         />
       </div>
+      {showPartyDisplay && <PartyVisual partyList={partyList} />}
     </form>
   );
 };

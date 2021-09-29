@@ -36,19 +36,19 @@ const MenuDisplay = ({
       <div>
         <Button
           color="#CACF85"
-          text="Create Party"
+          text="Create New Party"
           onClick={(e) => handleOpenPartyModal(e, "Player", "#CACF85")}
           className="btn"
         />
         <Button
           color="#CACF85"
-          text="Add Party"
+          text="Add Saved Party"
           onClick={(e) => handleAddParty(e)}
           className="btn"
         />
         <Button
           color="#CACF85"
-          text="Clear Party"
+          text="Clear Saved Party"
           onClick={(e) => handleClearParty(e)}
           className="btn"
         />
@@ -56,7 +56,7 @@ const MenuDisplay = ({
       <div>
         <Button
           color="#6a5d83"
-          text="Clear All"
+          text="Clear Display"
           onClick={handleClearList}
           className="btn"
         />
