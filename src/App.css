@@ -250,6 +250,21 @@ input:focus {
   grid-row: 3 / 4;
 }
 
+input {
+  border: 0;
+  padding: 0.5em 1.25em;
+  color: #f5f5f5;
+  width: 100%;
+  font-size: 1.2rem;
+  margin: 0;
+  display: block;
+  box-sizing: border-box;
+}
+
+.bg-darkgrey {
+  background-color: #222422;
+}
+
 .modal-party-visual {
   grid-column: 1 / 4;
   grid-row: 5 / 6;
@@ -272,4 +287,15 @@ input:focus {
   padding: 0.5em 0.75em;
   max-width: 50%;
   flex-grow: 1;
+=======
+  margin-top: 0.5em;
+  font-size: 1.2rem;
 }
+
+.party-member-visual {
+  padding: 0.5em;
+  flex-grow: 1;
+  min-width: 30%;
+  max-width: 50%;
+}
+

@@ -42,7 +42,7 @@ const MenuDisplay = ({
       </div>
 
       <div>
-        <Button
+      <Button
           color="#6a5d83"
           text="Clear Combat List"
           onClick={handleClearList}

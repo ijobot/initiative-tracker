@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../utils/Button";
 import DropdownScore from "../utils/DropdownScore";
 import DropdownType from "../utils/DropdownType";
+import NameModal from "../utils/NameModal"
 
 const Combatant = ({
   typeOfEntry,
@@ -12,7 +13,14 @@ const Combatant = ({
   index,
   editCombatantScore,
   editCombatantType,
+  handleOpenNameModal,
+  handleCloseNameModal,
+  editCombatantName,
+  showNameModal
 }) => {
+  
+
+
   const handleEditCombatantType = (editedType, index) => {
     editCombatantType(editedType.target.value, index);
   };
@@ -20,7 +28,8 @@ const Combatant = ({
   const handleEditCombatantScore = (editedScore, index) => {
     editCombatantScore(editedScore.target.value, index);
   };
-  return (
+
+    return (
     <div
       style={{ backgroundColor: colorOfDiv }}
       className="container combatant-row"
@@ -37,7 +46,7 @@ const Combatant = ({
         </select>
       </div>
 
-      <p>{name}</p>
+      <p onClick={(e) => handleOpenNameModal(typeOfEntry, colorOfDiv)}>{name}</p>
 
       <div className="score-picker">
         <select
@@ -58,7 +67,18 @@ const Combatant = ({
         className="btn btn-small"
         onClick={() => removeCombatant(index)}
       />
+
+      {showNameModal && (
+        <NameModal
+          typeOfEntry={typeOfEntry}
+          colorOfModal={colorOfDiv}
+          handleCloseNameModal={handleCloseNameModal}
+          editCombatantName={editCombatantName}
+          index={index}
+        />
+      )}
     </div>
+    
   );
 };
 
