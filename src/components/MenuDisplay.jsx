@@ -3,10 +3,8 @@ import Button from "../utils/Button";
 
 const MenuDisplay = ({
   handleOpenModal,
-  handleOpenPartyModal,
   handleClearList,
-  handleAddParty,
-  handleClearParty,
+  handleOpenPartyModal,
 }) => {
   return (
     <div className="main-menu container bg-darkgrey border">
@@ -33,33 +31,20 @@ const MenuDisplay = ({
           className="btn"
         />
       </div>
+
       <div>
-      <Button
-          color="#CACF85"
-          text="Create New Party"
+        <Button
+          color="#8CBA80"
           text="Create Party"
-          onClick={(e) => handleOpenPartyModal(e, "Player", "#CACF85")}
-          className="btn"
-        />
-        <Button
-          color="#CACF85"
-          text="Add Party"
-          onClick={(e) => handleAddParty(e)}
-          className="btn"
-        />
-        <Button
-          color="#CACF85"
-          text="Clear Saved Party"
-          text="Clear Party"
-          onClick={(e) => handleClearParty(e)}
+          onClick={(e) => handleOpenPartyModal(e, "Player", "#8CBA80")}
           className="btn"
         />
       </div>
+
       <div>
       <Button
           color="#6a5d83"
-          text="Clear Display"
-          text="Clear All"
+          text="Clear Combat List"
           onClick={handleClearList}
           className="btn"
         />
