@@ -6,6 +6,10 @@ const CombatDisplay = ({
   removeCombatant,
   editCombatantScore,
   editCombatantType,
+  handleOpenNameModal,
+  handleCloseNameModal,
+  editCombatantName,
+  showNameModal
 }) => {
   return (
     <div className="combatant-menu container bg-darkgrey border">
@@ -14,6 +18,10 @@ const CombatDisplay = ({
         removeCombatant={removeCombatant}
         editCombatantScore={editCombatantScore}
         editCombatantType={editCombatantType}
+        handleOpenNameModal={handleOpenNameModal}
+        handleCloseNameModal={handleCloseNameModal}
+        editCombatantName={editCombatantName}
+        showNameModal={showNameModal}
       />
     </div>
   );

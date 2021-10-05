@@ -5,6 +5,10 @@ const Combatants = ({
   removeCombatant,
   editCombatantScore,
   editCombatantType,
+  handleOpenNameModal,
+  handleCloseNameModal,
+  editCombatantName,
+  showNameModal
 }) => {
   const combatantMap = combatantList.map((data, index) => {
     return (
@@ -18,6 +22,10 @@ const Combatants = ({
         index={index}
         editCombatantScore={editCombatantScore}
         editCombatantType={editCombatantType}
+        handleOpenNameModal={handleOpenNameModal}
+        handleCloseNameModal={handleCloseNameModal}
+        editCombatantName={editCombatantName}
+        showNameModal={showNameModal}
       />
     );
   });

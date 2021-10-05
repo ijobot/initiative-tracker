@@ -14,6 +14,7 @@ const PartyModal = ({
   const [showPartyDisplay, setShowPartyDisplay] = useState(false);
 
   const handleAddPartyMember = (e) => {
+  const handleModalSubmit = (e) => {
     e.preventDefault();
     e.currentTarget.blur();
 
@@ -70,6 +71,7 @@ const PartyModal = ({
           text="Add"
           className="btn"
           onClick={handleAddPartyMember}
+          onClick={handleModalSubmit}
         />
         <Button
           color="#737373ff"
@@ -84,11 +86,12 @@ const PartyModal = ({
           text="Finish"
           className="btn"
           onClick={() => handleFinishPartyCreation()}
+          onClick={() => handleClosePartyModal()}
         />
       </div>
       {showPartyDisplay && <PartyVisual partyList={partyList} />}
     </form>
   );
 };
-
+}
 export default PartyModal;
