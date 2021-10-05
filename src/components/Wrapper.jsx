@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MenuDisplay from "./MenuDisplay";
 import CombatDisplay from "./CombatDisplay";
+import SavedPartiesDisplay from "./SavedPartiesDisplay";
 import cloneDeep from "lodash/cloneDeep";
 import Modal from "../utils/Modal";
 import PartyModal from "../utils/PartyModal";
@@ -12,6 +13,7 @@ const Wrapper = () => {
   const [combatantList, setCombatantList] = useState([]);
   const [showPartyModal, setShowPartyModal] = useState(false);
   const [partyList, setPartyList] = useState([]);
+  const [buttonToggle, setButtonToggle] = useState(false);
 
   const handleOpenModal = (e, type, color) => {
     e.currentTarget.blur();
@@ -33,11 +35,18 @@ const Wrapper = () => {
 
   const handleClosePartyModal = () => {
     setShowPartyModal(false);
+    setButtonToggle(true);
   };
 
   const addCombatant = (newCombatant) => {
     const updatedCombatantList = cloneDeep(combatantList);
     updatedCombatantList.push(newCombatant);
+    setCombatantList(updatedCombatantList);
+  };
+
+  const removeCombatant = (index) => {
+    const updatedCombatantList = cloneDeep(combatantList);
+    updatedCombatantList.splice(index, 1);
     setCombatantList(updatedCombatantList);
   };
 
@@ -60,12 +69,7 @@ const Wrapper = () => {
   const handleClearParty = (e) => {
     e.currentTarget.blur();
     setPartyList([]);
-  };
-
-  const removeCombatant = (index) => {
-    const updatedCombatantList = cloneDeep(combatantList);
-    updatedCombatantList.splice(index, 1);
-    setCombatantList(updatedCombatantList);
+    setButtonToggle(false);
   };
 
   const editCombatantScore = (editedScore, index) => {
@@ -89,6 +93,10 @@ const Wrapper = () => {
     }
   };
 
+  const assignPartyToDiv = (partyList) => {
+    console.log("assignPartyToDiv", partyList);
+  };
+
   const handleClearList = (e) => {
     e.currentTarget.blur();
     setCombatantList([]);
@@ -101,13 +109,20 @@ const Wrapper = () => {
         handleOpenPartyModal={handleOpenPartyModal}
         handleClearList={handleClearList}
         handleAddParty={handleAddParty}
-        handleClearParty={handleClearParty}
+        // handleClearParty={handleClearParty}
+        buttonToggle={buttonToggle}
       />
       <CombatDisplay
         combatantList={combatantList}
         removeCombatant={removeCombatant}
         editCombatantScore={editCombatantScore}
         editCombatantType={editCombatantType}
+      />
+      <SavedPartiesDisplay
+        partyList={partyList}
+        buttonToggle={buttonToggle}
+        handleAddParty={handleAddParty}
+        handleClearParty={handleClearParty}
       />
       {showModal && (
         <Modal
@@ -124,6 +139,8 @@ const Wrapper = () => {
           handleClosePartyModal={handleClosePartyModal}
           addPartyMember={addPartyMember}
           partyList={partyList}
+          assignPartyToDiv={assignPartyToDiv}
+          setButtonToggle={setButtonToggle}
         />
       )}
     </>

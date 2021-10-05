@@ -8,10 +8,13 @@ const PartyModal = ({
   addPartyMember,
   handleClosePartyModal,
   partyList,
+  assignPartyToDiv,
+  setButtonToggle,
 }) => {
   const [name, setName] = useState("");
   const [score, setScore] = useState("");
   const [showPartyDisplay, setShowPartyDisplay] = useState(false);
+  const [finishButtonToggle, setFinishButtonToggle] = useState(false);
 
   const handleAddPartyMember = (e) => {
     e.preventDefault();
@@ -27,11 +30,15 @@ const PartyModal = ({
     addPartyMember(newPartyMember);
     setName("");
     setScore("");
+    setFinishButtonToggle(true);
   };
 
   const handleFinishPartyCreation = () => {
     setShowPartyDisplay(false);
+    setFinishButtonToggle(false);
     handleClosePartyModal();
+    assignPartyToDiv(partyList);
+    setButtonToggle(true);
   };
 
   if (score !== score) {
@@ -40,11 +47,11 @@ const PartyModal = ({
 
   return (
     <form
-      className="modal modal-grid bg-darkgrey border"
+      className="modal party-modal-grid bg-darkgrey border"
       style={{ backgroundColor: colorOfModal }}
     >
-      <h3 className="modal-entry">{typeOfEntry}</h3>
-      <div className="modal-inputs">
+      <h3 className="party-modal-entry">Enter Party Names</h3>
+      <div className="party-modal-input">
         <input
           type="text"
           placeholder="Enter Combatant Name"
@@ -52,19 +59,19 @@ const PartyModal = ({
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-
         <input
           type="text"
           placeholder="Enter Initiative Score"
           className="bg-darkgrey"
           value={score}
+          pattern="[0-9]*"
           onChange={(e) =>
             setScore(parseInt(e.target.value.split(/\D/).join("")))
           }
         />
       </div>
 
-      <div className="modal-buttons">
+      <div className="party-modal-buttons">
         <Button
           color="#737373ff"
           text="Add"
@@ -78,13 +85,15 @@ const PartyModal = ({
           onClick={() => handleClosePartyModal()}
         />
       </div>
-      <div className="modal-finish-party">
-        <Button
-          color="#737373ff"
-          text="Finish"
-          className="btn"
-          onClick={() => handleFinishPartyCreation()}
-        />
+      <div className="party-modal-finish">
+        {finishButtonToggle && (
+          <Button
+            color="#737373ff"
+            text="Complete Party Creation"
+            className="btn"
+            onClick={() => handleFinishPartyCreation()}
+          />
+        )}
       </div>
       {showPartyDisplay && <PartyVisual partyList={partyList} />}
     </form>
