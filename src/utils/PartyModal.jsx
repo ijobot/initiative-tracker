@@ -7,9 +7,8 @@ const PartyModal = ({
   colorOfModal,
   addPartyMember,
   handleClosePartyModal,
-  partyList,
-  assignPartyToDiv,
   setButtonToggle,
+  partyList,
 }) => {
   const [name, setName] = useState("");
   const [score, setScore] = useState("");
@@ -17,15 +16,15 @@ const PartyModal = ({
   const [finishButtonToggle, setFinishButtonToggle] = useState(false);
 
   const handleAddPartyMember = (e) => {
-  const handleModalSubmit = (e) => {
     e.preventDefault();
-    e.currentTarget.blur();
+    e.target.blur();
 
     if (!name) {
       alert("Please enter combatant's name");
     } else if (!score) {
       alert("Please enter combatant's initiative score");
     }
+
     const newPartyMember = { typeOfEntry, name, score, colorOfModal };
     setShowPartyDisplay(true);
     addPartyMember(newPartyMember);
@@ -38,7 +37,6 @@ const PartyModal = ({
     setShowPartyDisplay(false);
     setFinishButtonToggle(false);
     handleClosePartyModal();
-    assignPartyToDiv(partyList);
     setButtonToggle(true);
   };
 
@@ -78,7 +76,6 @@ const PartyModal = ({
           text="Add"
           className="btn"
           onClick={handleAddPartyMember}
-          onClick={handleModalSubmit}
         />
         <Button
           color="#737373ff"
@@ -96,11 +93,10 @@ const PartyModal = ({
             onClick={() => handleFinishPartyCreation()}
           />
         )}
-
       </div>
       {showPartyDisplay && <PartyVisual partyList={partyList} />}
     </form>
   );
 };
-}
+
 export default PartyModal;

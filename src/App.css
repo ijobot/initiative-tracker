@@ -287,7 +287,6 @@ input {
   padding: 0.5em 0.75em;
   max-width: 50%;
   flex-grow: 1;
-=======
   margin-top: 0.5em;
   font-size: 1.2rem;
 }
@@ -298,4 +297,3 @@ input {
   min-width: 30%;
   max-width: 50%;
 }
-

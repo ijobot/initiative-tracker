@@ -7,16 +7,14 @@ const SavedPartiesDisplay = ({
   buttonToggle,
   partyList,
 }) => {
-  console.log(partyList);
   const partyListMap = partyList.map((member) => {
     return (
-      <div className="party-member-div">
+      <div className="party-member-div" key={member.name + member.score}>
         <p>{member.name}</p>
         <p>{member.score}</p>
       </div>
     );
   });
-  console.log(partyListMap);
   return (
     <div className="party-menu container bg-darkgrey border">
       {buttonToggle && (

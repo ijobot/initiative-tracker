@@ -9,16 +9,16 @@ import PartyModal from "../utils/PartyModal";
 
 const Wrapper = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showPartyModal, setShowPartyModal] = useState(false);
+  const [showNameModal, setShowNameModal] = useState(false);
+
   const [typeOfEntry, setTypeOfEntry] = useState("");
   const [colorOfModal, setColorOfModal] = useState("");
+
   const [combatantList, setCombatantList] = useState([]);
-  const [showPartyModal, setShowPartyModal] = useState(false);
   const [partyList, setPartyList] = useState([]);
 
   const [buttonToggle, setButtonToggle] = useState(false);
-
-  const [showNameModal, setShowNameModal] = useState(false);
-  
 
   // MODAL //
 
@@ -35,17 +35,18 @@ const Wrapper = () => {
 
   // END MODAL //
 
+  // PARTY MODAL AND PARTY FUNCTIONS //
+
+  const handleOpenPartyModal = (e, type, color) => {
+    e.currentTarget.blur();
+    setTypeOfEntry(type);
+    setColorOfModal(color);
+    setShowPartyModal(true);
+  };
+
   const handleClosePartyModal = () => {
     setShowPartyModal(false);
     setButtonToggle(true);
-  };
-
-
-
-  const removeCombatant = (index) => {
-    const updatedCombatantList = cloneDeep(combatantList);
-    updatedCombatantList.splice(index, 1);
-    setCombatantList(updatedCombatantList);
   };
 
   const addPartyMember = (newPartyMember) => {
@@ -54,8 +55,43 @@ const Wrapper = () => {
     setPartyList(updatedPartyList);
   };
 
+  const handleAddParty = (e) => {
+    e.currentTarget.blur();
+    const updatedCombatantList = cloneDeep(partyList);
 
-  // COMBATANT // 
+    for (const val of updatedCombatantList) {
+      val.colorOfModal = "#8CBA80";
+    }
+
+    setCombatantList(updatedCombatantList);
+  };
+
+  const handleClearParty = (e) => {
+    e.currentTarget.blur();
+    setPartyList([]);
+    setButtonToggle(false);
+  };
+
+  // END PARTY MODAL AND PARTY FUNCTIONS //
+
+  // NAME MODAL //
+
+  const handleOpenNameModal = (type, color) => {
+    console.log(type, color);
+    setTypeOfEntry(type);
+    console.log(typeOfEntry);
+    setColorOfModal(color);
+    console.log(colorOfModal);
+    setShowNameModal(true);
+  };
+
+  const handleCloseNameModal = () => {
+    setShowNameModal(false);
+  };
+
+  // END NAME MODAL //
+
+  // COMBATANT //
 
   const addCombatant = (newCombatant) => {
     const updatedCombatantList = cloneDeep(combatantList);
@@ -63,24 +99,20 @@ const Wrapper = () => {
     setCombatantList(updatedCombatantList);
   };
 
-
-  const handleClearParty = (e) => {
-    e.currentTarget.blur();
-    setPartyList([]);
-    setButtonToggle(false);
-
-  // END COMBATANT// 
-
-
-
-
-  // COMBATANT EDITS //
-
-  const editCombatantScore = (editedScore, index) => {
+  const removeCombatant = (index) => {
     const updatedCombatantList = cloneDeep(combatantList);
-    updatedCombatantList[index].score = parseInt(editedScore);
+    updatedCombatantList.splice(index, 1);
     setCombatantList(updatedCombatantList);
   };
+
+  const handleClearList = (e) => {
+    e.currentTarget.blur();
+    setCombatantList([]);
+  };
+
+  // END COMBATANT//
+
+  // COMBATANT EDITS //
 
   const editCombatantType = (editedType, index) => {
     const updatedCombatantList = cloneDeep(combatantList);
@@ -97,84 +129,19 @@ const Wrapper = () => {
     }
   };
 
-  const assignPartyToDiv = (partyList) => {
-    console.log("assignPartyToDiv", partyList);
+  const editCombatantName = (editedName, index) => {
+    const updatedCombatantList = cloneDeep(combatantList);
+    updatedCombatantList[index].name = editedName;
+    setCombatantList(updatedCombatantList);
   };
 
-  const handleClearList = (e) => {
-    e.currentTarget.blur();
-    setCombatantList([]);
+  const editCombatantScore = (editedScore, index) => {
+    const updatedCombatantList = cloneDeep(combatantList);
+    updatedCombatantList[index].score = parseInt(editedScore);
+    setCombatantList(updatedCombatantList);
   };
 
   // END COMBATANT EDITS //
-
-
-  // PARTY //
-
-  const handleOpenPartyModal = (e, type, color) => {
-    e.currentTarget.blur();
-    setTypeOfEntry(type);
-    setColorOfModal(color);
-    setShowPartyModal(true);
-  };
-
-  const handleClosePartyModal = () => {
-    setShowPartyModal(false);
-  };
-
-  const addPartyMember = (newPartyMember) => {
-    const updatedPartyList = cloneDeep(partyList);
-    updatedPartyList.push(newPartyMember);
-    setPartyList(updatedPartyList);
-    console.log("party list", updatedPartyList);
-  };
-
-  const handleAddParty = (e) => {
-    e.currentTarget.blur();
-    const updatedCombatantList = cloneDeep(partyList);
-
-    for (const val of updatedCombatantList) {
-      val.colorOfModal = "#8CBA80";
-    }
-    
-    setCombatantList(updatedCombatantList);
-  };
-
-  const handleClearParty = (e) => {
-    e.currentTarget.blur();
-    setPartyList([]);
-  };
-
-  // END PARTY //
-
-
-
-
-  // NAMEMODAL //
-
-  const handleOpenNameModal = (type, color) => {
-    console.log(type, color)
-    setTypeOfEntry(type);
-    console.log(typeOfEntry)
-    setColorOfModal(color);
-    console.log(colorOfModal)
-    setShowNameModal(true);
-  };
-
-  const handleCloseNameModal = () => {
-    setShowNameModal(false);
-  };
-
-  const editCombatantName = (editedName, index) => {
-    const updatedCombatantList = cloneDeep(combatantList);
-       updatedCombatantList[index].name = editedName;
-    setCombatantList(updatedCombatantList);
-  };
-
-
-  // END NAMEMODAL //
-
- 
 
   return (
     <>
@@ -183,7 +150,6 @@ const Wrapper = () => {
         handleOpenPartyModal={handleOpenPartyModal}
         handleClearList={handleClearList}
         handleAddParty={handleAddParty}
-        // handleClearParty={handleClearParty}
         buttonToggle={buttonToggle}
       />
       <CombatDisplay
@@ -217,10 +183,10 @@ const Wrapper = () => {
           colorOfModal={colorOfModal}
           handleClosePartyModal={handleClosePartyModal}
           addPartyMember={addPartyMember}
+          setButtonToggle={setButtonToggle}
+          partyList={partyList}
         />
       )}
-
-      
     </>
   );
 };
